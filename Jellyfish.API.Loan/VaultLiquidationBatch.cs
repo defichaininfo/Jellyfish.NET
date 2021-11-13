@@ -1,6 +1,6 @@
 ﻿namespace Jellyfish.API.Loan;
 
-public class AuctionBatchDetails
+public class VaultLiquidationBatch
 {
     public decimal Index { get; init; }
     public string[] Collaterals { get; init; } = Array.Empty<string>();

@@ -175,20 +175,20 @@ public class Loan
     /// Returns information about vault.
     /// </summary>
     /// <param name="vaultId">vault hex id</param>
-    public async Task<VaultDetails> GetVaultAsync(string vaultId)
+    public async Task<Vault> GetVaultAsync(string vaultId)
     {
-        return await _client.CallAsync<VaultDetails>("getvault", vaultId);
+        return await _client.CallAsync<Vault>("getvault", vaultId);
     }
 
     /// <summary>
     /// List all available vaults.
     /// </summary>
     /// <returns>Array of objects including details of the vaults.</returns>
-    public async Task<ListVaultDetails[]> ListVaultsAsync(VaultPagination? pagination = null, ListVaultOptions? options = null)
+    public async Task<Vault[]> ListVaultsAsync(VaultPagination? pagination = null, ListVaultOptions? options = null)
     {
         pagination ??= new VaultPagination();
         options ??= new ListVaultOptions();
-        return await _client.CallAsync<ListVaultDetails[]>("listvaults", options, pagination);
+        return await _client.CallAsync<Vault[]>("listvaults", options, pagination);
     }
 
     /// <summary>

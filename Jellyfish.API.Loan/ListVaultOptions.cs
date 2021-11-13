@@ -16,4 +16,6 @@ public class ListVaultOptions
     /// vault's state
     /// </summary>
     public VaultState? State { get; init; }
+
+    public bool? Verbose { get; init; }
 }
