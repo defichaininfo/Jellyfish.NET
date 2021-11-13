@@ -200,4 +200,13 @@ public class Loan
         utxos ??= Array.Empty<UTXO>();
         return await _client.CallAsync<string>("takeloan", metadata, utxos);
     }
+
+    /// <summary>
+    /// Close vault
+    /// </summary>
+    public async Task<string> CloseVaultAsync(CloseVault closeVault, UTXO[]? utxos = null)
+    {
+        utxos ??= Array.Empty<UTXO>();
+        return await _client.CallAsync<string>("closevault", closeVault.VaultId, closeVault.To, utxos);
+    }
 }
