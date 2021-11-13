@@ -105,4 +105,22 @@ public class Oracle
     {
         return await _client.CallAsync<ListPricesData[]>("listprices");
     }
+
+    /// <summary>
+    /// Get fixed interval price.
+    /// </summary>
+    /// <param name="id">Price feed id</param>
+    public async Task<FixedIntervalPrice> GetFixedIntervalPriceAsync(string id)
+    {
+        return await _client.CallAsync<FixedIntervalPrice>("getfixedintervalprice", id);
+    }
+
+    /// <summary>
+    /// List all fixed interval prices.
+    /// </summary>
+    public async Task<ListFixedIntervalPrice[]> ListFixedIntervalPricesAsync(FixedIntervalPricePagination? pagination = null)
+    {
+        pagination ??= new FixedIntervalPricePagination { Limit = 100 };
+        return await _client.CallAsync<ListFixedIntervalPrice[]>("listfixedintervalprices", pagination);
+    }
 }
