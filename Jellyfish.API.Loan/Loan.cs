@@ -222,6 +222,16 @@ public class Loan
     }
 
     /// <summary>
+    /// Withdraw from vault
+    /// </summary>
+    /// <param name="utxos">Specific UTXOs to spend</param>
+    public async Task<string> WithdrawFromVault(WithdrawVault withdrawVault, UTXO[]? utxos = null)
+    {
+        utxos ??= Array.Empty<UTXO>();
+        return await _client.CallAsync<string>("withdrawfromvault", withdrawVault.VaultId, withdrawVault.To, withdrawVault.Amount, utxos);
+    }
+
+    /// <summary>
     /// Take loan
     /// </summary>
     /// <param name="utxos">Specific UTXOs to spend</param>
