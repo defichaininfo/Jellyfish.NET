@@ -79,15 +79,36 @@ public class Masternode
     /// <summary>
     /// Set special governance variables
     /// </summary>
-    /// <param name="input">object</param>
+    /// <param name="key">input json key</param>
+    /// <param name="value">input json value</param>
+    /// <param name="utxos">Specific utxos to spend</param>
     /// <returns>hash</returns>
-    public async Task<uint256> SetGovernanceVariableAsync(string key, object value)
+    public async Task<uint256> SetGovernanceVariableAsync(string key, object value, UTXO[]? utxos = null)
     {
-        var obj = new JObject
+        utxos ??= Array.Empty<UTXO>();
+        var input = new JObject
         {
             { key, JToken.FromObject(value) }
         };
-        var hash = await _client.CallAsync<string>("setgov", obj);
+        var hash = await _client.CallAsync<string>("setgov", input, utxos);
+        return uint256.Parse(hash);
+    }
+
+    /// <summary>
+    /// Set special governance variables with activation height specified
+    /// </summary>
+    /// <param name="key">input json key</param>
+    /// <param name="value">input json value</param>
+    /// <param name="utxos">Specific utxos to spend</param>
+    /// <returns>hash</returns>
+    public async Task<uint256> SetGovHeightAsync(string key, object value, int activationHeight, UTXO[]? utxos = null)
+    {
+        utxos ??= Array.Empty<UTXO>();
+        var input = new JObject
+        {
+            { key, JToken.FromObject(value) }
+        };
+        var hash = await _client.CallAsync<string>("setgovheight", input, activationHeight, utxos);
         return uint256.Parse(hash);
     }
 
@@ -99,6 +120,14 @@ public class Masternode
     public async Task<object> GetGovernanceVariablesAsync(string key)
     {
         return await _client.CallAsync<object>("getgov", key);
+    }
+
+    /// <summary>
+    /// List all governance variables together if any with activation height
+    /// </summary>
+    public async Task<JObject[][]> ListGovsAsync()
+    {
+        return await _client.CallAsync<JObject[][]>("listgovs");
     }
 
     /// <summary>
