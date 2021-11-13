@@ -11,4 +11,6 @@ public class GetLoanSchemeResult
     public decimal InterestRate { get; init; }
     [JsonProperty("minColRatio")]
     public double MinimumCollateralizationRatio { get; init; }
+    [JsonProperty("default")]
+    public bool IsDefault { get; init; }
 }

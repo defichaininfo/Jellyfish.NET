@@ -18,5 +18,6 @@ public class VaultDetails
     public decimal? CollateralValue { get; init; }
     public decimal? LoanValue { get; init; }
     public decimal? InterestValue { get; init; }
-    public decimal? CurrentRatio { get; init; }
+    public double? CollateralRatio { get; init; }
+    public decimal? InformativeRatio { get; init; }
 }

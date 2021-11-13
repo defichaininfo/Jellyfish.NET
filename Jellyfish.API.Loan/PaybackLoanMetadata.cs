@@ -1,6 +1,6 @@
 ﻿namespace Jellyfish.API.Loan;
 
-public class LoanPaybackMetadata
+public class PaybackLoanMetadata
 {
     /// <summary>
     /// Vault id

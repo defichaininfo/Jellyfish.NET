@@ -223,9 +223,9 @@ public class Loan
     /// <summary>
     /// Return loan in a desired amount.
     /// </summary>
-    public async Task<string> LoanPaybackAsync(LoanPaybackMetadata metadata, UTXO[]? utxos = null)
+    public async Task<string> PaybackLoanAsync(PaybackLoanMetadata metadata, UTXO[]? utxos = null)
     {
         utxos ??= Array.Empty<UTXO>();
-        return await _client.CallAsync<string>("loanpayback", metadata, utxos);
+        return await _client.CallAsync<string>("paybackloan", metadata, utxos);
     }
 }

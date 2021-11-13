@@ -12,6 +12,5 @@ public enum VaultState
     Active,
     InLiquidation,
     Frozen,
-    MayLiquidate,
-    LockedInLiquidation
+    MayLiquidate
 }
