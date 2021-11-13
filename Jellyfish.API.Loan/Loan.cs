@@ -181,6 +181,15 @@ public class Loan
     }
 
     /// <summary>
+    /// Close vault
+    /// </summary>
+    public async Task<string> CloseVaultAsync(CloseVault closeVault, UTXO[]? utxos = null)
+    {
+        utxos ??= Array.Empty<UTXO>();
+        return await _client.CallAsync<string>("closevault", closeVault.VaultId, closeVault.To, utxos);
+    }
+
+    /// <summary>
     /// List all available vaults.
     /// </summary>
     /// <returns>Array of objects including details of the vaults.</returns>
@@ -212,11 +221,11 @@ public class Loan
     }
 
     /// <summary>
-    /// Close vault
+    /// Return loan in a desired amount.
     /// </summary>
-    public async Task<string> CloseVaultAsync(CloseVault closeVault, UTXO[]? utxos = null)
+    public async Task<string> LoanPaybackAsync(LoanPaybackMetadata metadata, UTXO[]? utxos = null)
     {
         utxos ??= Array.Empty<UTXO>();
-        return await _client.CallAsync<string>("closevault", closeVault.VaultId, closeVault.To, utxos);
+        return await _client.CallAsync<string>("loanpayback", metadata, utxos);
     }
 }
