@@ -249,4 +249,15 @@ public class Loan
         utxos ??= Array.Empty<UTXO>();
         return await _client.CallAsync<string>("paybackloan", metadata, utxos);
     }
+
+    /// <summary>
+    /// Bid to vault in auction
+    /// </summary>
+    /// <param name="utxos">Specific UTXOs to spend</param>
+    /// <returns>The transaction id</returns>
+    public async Task<string> PlaceAuctionBidAsync(AuctionBid placeAuctionBid, UTXO[]? utxos = null)
+    {
+        utxos ??= Array.Empty<UTXO>();
+        return await _client.CallAsync<string>("placeauctionbid", placeAuctionBid.VaultId, placeAuctionBid.Index, placeAuctionBid.From, placeAuctionBid.Amount, utxos);
+    }
 }
