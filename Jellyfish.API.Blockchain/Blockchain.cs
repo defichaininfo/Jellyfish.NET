@@ -170,4 +170,24 @@ public class Blockchain
     {
         return await _client.CallAsync<MempoolInfo>("getmempoolinfo");
     }
+
+    /// <summary>
+    /// Wait for any new block
+    /// </summary>
+    /// <param name="timeout">in millis</param>
+    /// <returns>the current block on timeout or exit</returns>
+    public async Task<WaitBlockResult> WaitForNewBlockAsync(int timeout = 30000)
+    {
+        return await _client.CallAsync<WaitBlockResult>("waitfornewblock", timeout);
+    }
+
+    /// <summary>
+    /// Waits for block height equal or higher than provided and returns the height and hash of the current tip.
+    /// </summary>
+    /// <param name="timeout">in millis</param>
+    /// <returns>the current block on timeout or exit</returns>
+    public async Task<WaitBlockResult> WaitForBlockHeightAsync(int height, int timeout = 30000)
+    {
+        return await _client.CallAsync<WaitBlockResult>("waitforblockheight", height, timeout);
+    }
 }
