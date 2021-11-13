@@ -142,6 +142,16 @@ public class Loan
     }
 
     /// <summary>
+    /// Get loan token.
+    /// </summary>
+    /// <param name="token">Symbol or id of loan token</param>
+    /// <returns>Loan token details</returns>
+    public async Task<LoanTokenDetails> GetLoanTokenAsync(string token)
+    {
+        return await _client.CallAsync<LoanTokenDetails>("getloantoken", token);
+    }
+
+    /// <summary>
     /// List all created loan tokens.
     /// </summary>
     public async Task<ListLoanTokenResult> ListLoanTokensAsync()
