@@ -81,6 +81,18 @@ public class PoolPair
     }
 
     /// <summary>
+    /// Creates a composite swap (swap between multiple poolpairs) transaction with given metadata.
+    /// </summary>
+    /// <param name="metadata">a provided information to create pool swap transaction</param>
+    /// <param name="utxos">array for utxos to spend from.</param>
+    /// <returns>hex of performed transaction</returns>
+    public async Task<string> CompositeSwapAsync(PoolSwapMetadata metadata, UTXO[]? utxos = null)
+    {
+        utxos ??= Array.Empty<UTXO>();
+        return await _client.CallAsync<string>("compositeswap", metadata, utxos);
+    }
+
+    /// <summary>
     /// Create a test pool swap transaction to check pool swap's return result
     /// </summary>
     /// <param name="metadata">a provided information to create test pool swap transaction</param>
