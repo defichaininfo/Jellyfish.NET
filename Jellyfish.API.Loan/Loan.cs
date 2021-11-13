@@ -146,17 +146,17 @@ public class Loan
     /// </summary>
     /// <param name="token">Symbol or id of loan token</param>
     /// <returns>Loan token details</returns>
-    public async Task<LoanTokenDetails> GetLoanTokenAsync(string token)
+    public async Task<LoanTokenResult> GetLoanTokenAsync(string token)
     {
-        return await _client.CallAsync<LoanTokenDetails>("getloantoken", token);
+        return await _client.CallAsync<LoanTokenResult>("getloantoken", token);
     }
 
     /// <summary>
     /// List all created loan tokens.
     /// </summary>
-    public async Task<ListLoanTokenResult> ListLoanTokensAsync()
+    public async Task<LoanTokenResult[]> ListLoanTokensAsync()
     {
-        return await _client.CallAsync<ListLoanTokenResult>("listloantokens");
+        return await _client.CallAsync<LoanTokenResult[]>("listloantokens");
     }
 
     /// <summary>
