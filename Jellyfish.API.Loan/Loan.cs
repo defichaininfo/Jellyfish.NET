@@ -181,23 +181,23 @@ public class Loan
     }
 
     /// <summary>
+    /// List all available vaults.
+    /// </summary>
+    /// <returns>Array of objects including details of the vaults.</returns>
+    public async Task<ListVaultDetails[]> ListVaultsAsync(VaultPagination? pagination = null, ListVaultOptions? options = null)
+    {
+        pagination ??= new VaultPagination();
+        options ??= new ListVaultOptions();
+        return await _client.CallAsync<ListVaultDetails[]>("listvaults", options, pagination);
+    }
+
+    /// <summary>
     /// Close vault
     /// </summary>
     public async Task<string> CloseVaultAsync(CloseVault closeVault, UTXO[]? utxos = null)
     {
         utxos ??= Array.Empty<UTXO>();
         return await _client.CallAsync<string>("closevault", closeVault.VaultId, closeVault.To, utxos);
-    }
-
-    /// <summary>
-    /// List all available vaults.
-    /// </summary>
-    /// <returns>Array of objects including details of the vaults.</returns>
-    public async Task<VaultDetails[]> ListVaultsAsync(VaultPagination? pagination = null, ListVaultOptions? options = null)
-    {
-        pagination ??= new VaultPagination();
-        options ??= new ListVaultOptions();
-        return await _client.CallAsync<VaultDetails[]>("listvaults", options, pagination);
     }
 
     /// <summary>

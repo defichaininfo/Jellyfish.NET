@@ -7,9 +7,10 @@ public class VaultDetails
     public string VaultId { get; init; } = string.Empty;
     public string LoanSchemeId { get; init; } = string.Empty;
     public string OwnerAddress { get; init; } = string.Empty;
-    public bool IsUnderLiquidation { get; init; }
-    [JsonProperty("invalidPrice")]
-    public bool IsInvalidPrice { get; init; }
+    public VaultState State { get; init; }
+    public int? LiquidationHeight { get; init; }
+    public double? LiquidationPenalty { get; init; }
+    public int? BatchCount { get; init; }
     public AuctionBatchDetails[]? Batches { get; init; }
     public string[]? CollateralAmounts {  get; init; }
     public string[]? LoanAmounts { get; init; }
