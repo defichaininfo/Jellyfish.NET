@@ -172,6 +172,17 @@ public class Loan
     }
 
     /// <summary>
+    /// Create update vault transaction.
+    /// </summary>
+    /// <param name="utxos">Specific UTXOs to spend</param>
+    /// <returns>Transaction id of the transaction</returns>
+    public async Task<string> UpdateVaultAsync(string vaultId, UpdateVault vault, UTXO[]? utxos = null)
+    {
+        utxos ??= Array.Empty<UTXO>();
+        return await _client.CallAsync<string>("updatevault", vaultId, vault, utxos);
+    }
+
+    /// <summary>
     /// Returns information about vault.
     /// </summary>
     /// <param name="vaultId">vault hex id</param>
