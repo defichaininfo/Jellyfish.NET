@@ -45,6 +45,7 @@ public class JsonRpcClient : IApiClient
         switch (response.StatusCode)
         {
             case HttpStatusCode.Unauthorized:
+            case HttpStatusCode.Forbidden:
             case HttpStatusCode.NotFound:
             case HttpStatusCode.InternalServerError:
                 throw new ClientApiException($"{(int)response.StatusCode} - {response.StatusCode}");
