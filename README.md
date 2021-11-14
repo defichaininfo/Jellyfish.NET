@@ -4,7 +4,7 @@
 
 If you want to build a .NET application that operates on the DeFiChain, you have come to the right place!
 
-But be warned: This project is huge is under active development. You can already use some parts of Jellyfish.NET, others not yet. If you want to contribute, feel free to do so, your help is appreciated.
+But be warned: This project is huge and under active development. You can already use some parts of Jellyfish.NET, others not yet. If you want to contribute, feel free to do so, your help is appreciated.
 
 ## What is Jellyfish.NET?
 This project is a .NET port of DeFiChain [Jellyfish](https://github.com/DeFiCh/jellyfish). It is used to communicate with a DeFiChain full node and contains tools and libraries to build .NET applications for the DeFiChain.
