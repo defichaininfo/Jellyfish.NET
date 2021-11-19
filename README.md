@@ -11,7 +11,7 @@ This project is a .NET port of DeFiChain [Jellyfish](https://github.com/DeFiCh/j
 
 Its goal is to be roughly in sync with the APIs and features provided by the DeFiChain team to let .NET developers utilize its full potential.
 
-Jellyfish.NET utilizes modern .NET technology and programming techniques. It is built on the newly released .NET 6 and C# 10 and supports nullable reference types. API methods follow a task-based approach with the `async`/`await` pattern.
+Jellyfish.NET uses modern .NET technology and programming techniques. It is built on the newly released .NET 6 and C# 10 and supports nullable reference types. API methods follow a task-based approach with the `async`/`await` pattern.
 
 ## What is already complete and what isn't?
 - You can already use all of the existing Jellyfish APIs. This also means that there is a functioning API client as well as JSON serialization support
