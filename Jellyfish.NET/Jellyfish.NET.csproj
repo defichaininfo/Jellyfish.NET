@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>Jellyfish.NET</PackageId>
+    <AssemblyVersion></AssemblyVersion>
+    <Version>0.19.0</Version>
+    <Authors>DeFiChain.Info</Authors>
+    <Product>Jellyfish.NET</Product>
+    <Description>A .NET implementation of DeFiChain Jellyfish SDK</Description>
+    <PackageProjectUrl>https://github.com/defichaininfo/Jellyfish.NET</PackageProjectUrl>
+    <PackageIcon>Logo.PNG</PackageIcon>
+    <RepositoryUrl>https://github.com/defichaininfo/Jellyfish.NET</RepositoryUrl>
+    <PackageTags>defichain, defi, dfi, blockchain, jellyfish, api, sdk</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NBitcoin" Version="6.0.18" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Logo.PNG">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Jellyfish\Jellyfish.csproj" />
+    <ProjectReference Include="..\Jellyfish.NET\Jellyfish.NET.csproj" />
   </ItemGroup>
 
 </Project>
