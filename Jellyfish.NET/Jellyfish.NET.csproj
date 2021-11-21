@@ -16,6 +16,7 @@
     <PackageTags>defichain, defi, dfi, blockchain, jellyfish, api, sdk</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <RootNamespace>Jellyfish</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

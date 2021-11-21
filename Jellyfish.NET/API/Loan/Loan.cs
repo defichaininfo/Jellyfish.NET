@@ -260,4 +260,13 @@ public class Loan
         utxos ??= Array.Empty<UTXO>();
         return await _client.CallAsync<string>("placeauctionbid", placeAuctionBid.VaultId, placeAuctionBid.Index, placeAuctionBid.From, placeAuctionBid.Amount, utxos);
     }
+
+    /// <summary>
+    /// List all available auctions.
+    /// </summary>
+    public async Task<AuctionDetail[]> ListAuctionsAsync(AuctionPagination? pagination = null)
+    {
+        pagination ??= new AuctionPagination();
+        return await _client.CallAsync<AuctionDetail[]>("listauctions", pagination);
+    }
 }
