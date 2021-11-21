@@ -264,10 +264,10 @@ public class Loan
     /// <summary>
     /// List all available auctions.
     /// </summary>
-    public async Task<AuctionDetail[]> ListAuctionsAsync(AuctionPagination? pagination = null)
+    public async Task<VaultLiquidation[]> ListAuctionsAsync(AuctionPagination? pagination = null)
     {
         pagination ??= new AuctionPagination();
-        return await _client.CallAsync<AuctionDetail[]>("listauctions", pagination);
+        return await _client.CallAsync<VaultLiquidation[]>("listauctions", pagination);
     }
 
     /// <summary>
