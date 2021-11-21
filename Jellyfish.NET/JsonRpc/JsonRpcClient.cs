@@ -57,14 +57,17 @@ public class JsonRpcClient : IApiClient
         var requestBody = new RequestBody(method, args);
         var body = JellyfishJson.Stringify(requestBody);
         var response = await FetchWithTimeoutAsync(body);
-        var responseBody = await response.Content.ReadFromJsonAsync<ResponseBody>();
 
         switch (response.StatusCode)
         {
             case HttpStatusCode.Unauthorized:
+            case HttpStatusCode.Forbidden:
             case HttpStatusCode.NotFound:
+            case HttpStatusCode.InternalServerError:
                 throw new ClientApiException($"{(int)response.StatusCode} - {response.StatusCode}");
         }
+
+        var responseBody = await response.Content.ReadFromJsonAsync<ResponseBody>();
 
         if (responseBody?.Result == null)
         {
