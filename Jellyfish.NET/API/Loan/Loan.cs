@@ -120,6 +120,17 @@ public class Loan
     }
 
     /// <summary>
+    /// Quick access to multiple API with consolidated total collateral and loan value.<br/>
+    /// See <see cref="ListCollateralTokensAsync(ListCollateralTokens?)"/>.<br/>
+    /// See <see cref="ListLoanTokensAsync"/>.<br/>
+    /// See <see cref="ListLoanSchemesAsync"/>.
+    /// </summary>
+    public async Task<GetLoanInfoResult> GetLoanInfoAsync()
+    {
+        return await _client.CallAsync<GetLoanInfoResult>("getloaninfo");
+    }
+
+    /// <summary>
     /// Updates an existing loan token.
     /// </summary>
     /// <param name="oldToken">Previous tokens's symbol, id or creation tx (unique)</param>
