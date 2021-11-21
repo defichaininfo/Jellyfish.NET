@@ -8,5 +8,7 @@ public class Program
     {
         var client = new JellyfishClient("http://foo:bar@localhost:8554");
         var auctions = await client.Loan.ListAuctionsAsync();
+        var auctionHistory = await client.Loan.ListAuctionHistoryAsync("all");
+        var info = await client.Loan.GetLoanInfoAsync();
     }
 }
