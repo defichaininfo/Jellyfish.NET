@@ -269,4 +269,14 @@ public class Loan
         pagination ??= new AuctionPagination();
         return await _client.CallAsync<AuctionDetail[]>("listauctions", pagination);
     }
+
+    /// <summary>
+    /// Returns information about auction history.
+    /// </summary>
+    /// <param name="owner">address or reserved word : mine / all (Default to mine)</param>
+    public async Task<ListAuctionHistoryDetail[]> ListAuctionHistoryAsync(string owner = "mine", ListAuctionHistoryPagination? pagination = null)
+    {
+        pagination ??= new ListAuctionHistoryPagination();
+        return await _client.CallAsync<ListAuctionHistoryDetail[]>("listauctionhistory", owner, pagination);
+    }
 }
