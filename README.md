@@ -17,12 +17,11 @@ Jellyfish.NET uses modern .NET technology and programming techniques. It is buil
 - You can already use all of the existing Jellyfish APIs. This also means that there is a functioning API client as well as JSON serialization support
 - The APIs also include the upcoming decentralized stocks (Loan and Oracle APIs).
 - Other library code, like transaction signing or wallet management is not yet ported but will be there in the future.
-- It is also planned to provide Jellyfish.NET as a NuGet package for easier consumption.
 
 ## How to use Jellyfish.NET today
 As a prerequisite, you have to have a DeFiChain full node running on your computer. You also have to set up an RPC username and password on that full node.
 
-Then to use Jellyfish.NET, just check out the sources and add them to your solution. Reference the Jellyfish Assembly as seen in the Jellyfish.Sample project. From there, you only have to create a client and can start calling API methods!
+Then to use Jellyfish.NET, just install the Jellyfish.NET NuGet package from nuget.org. From there, you only have to create a client and can start calling API methods!
 
 ```csharp
 var client = new JellyfishClient("http://foo:bar@localhost:8554");
