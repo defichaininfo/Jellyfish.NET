@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <PackageId>Jellyfish.NET</PackageId>
     <AssemblyVersion></AssemblyVersion>
-    <Version>0.19.1</Version>
+    <Version>0.20.0</Version>
     <Authors>DeFiChain.Info</Authors>
     <Product>Jellyfish.NET</Product>
     <Description>A .NET implementation of DeFiChain Jellyfish SDK</Description>
