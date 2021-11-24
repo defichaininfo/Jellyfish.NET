@@ -1,6 +1,6 @@
 ﻿namespace Jellyfish.API.Loan;
 
-public class AuctionBid
+public class PlaceAuctionBid
 {
     /// <summary>
     /// Vault Id
