@@ -1,3 +1,5 @@
+[![NuGet](https://img.shields.io/nuget/dt/Jellyfish.NET.svg)](https://www.nuget.org/packages/Jellyfish.NET) 
+
 # Jellyfish.NET
 
 ## Welcome to Jellyfish.NET
