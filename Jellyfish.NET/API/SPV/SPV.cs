@@ -158,7 +158,7 @@ namespace Jellyfish.API.SPV
         public async Task<ListAnchorsResult> ListAnchorsAsync(ListAnchorsOptions? options = null)
         {
             options ??= new ListAnchorsOptions();
-            return await _client.CallAsync<ListAnchorsResult>("spv_listanchors", options.MinBtcHeight, options.MaxBtcHeight, options.MinConfirmations, options.MaxConfirmations);
+            return await _client.CallAsync<ListAnchorsResult>("spv_listanchors", options.MinBtcHeight, options.MaxBtcHeight, options.MinConfirmations, options.MaxConfirmations, options.StartBTCHeight, options.Limit);
         }
 
         /// <summary>

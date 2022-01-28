@@ -25,4 +25,14 @@ public class ListAnchorsOptions
     /// </summary>
     [JsonProperty("maxConfs")]
     public int? MaxConfirmations { get; init; } = -1;
+
+    /// <summary>
+    /// start BTC height
+    /// </summary>
+    public int? StartBTCHeight { get; init; } = -1;
+
+    /// <summary>
+    /// limit
+    /// </summary>
+    public int? Limit { get; init; } = -1;
 }
