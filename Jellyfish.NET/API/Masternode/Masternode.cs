@@ -24,9 +24,8 @@ public class Masternode
     /// <param name="operatorAddress">Masternode operator auth address (P2PKH only, unique). If empty, owner address will be used.</param>
     public async Task<string> CreateMasternodeAsync(string ownerAddress, string? operatorAddress = null, CreateMasternodeOptions? options = null)
     {
-        operatorAddress ??= ownerAddress;
         options ??= new CreateMasternodeOptions();
-        var parameters = new List<object?> { ownerAddress, operatorAddress, options.Utxos };
+        var parameters = new List<object?> { ownerAddress, operatorAddress ?? ownerAddress, options.Utxos };
         if (options.TimeLock != null)
         {
             parameters.Add(options.TimeLock);
