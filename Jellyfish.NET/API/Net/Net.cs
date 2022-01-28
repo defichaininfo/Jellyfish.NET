@@ -23,6 +23,14 @@ public class Net
     }
 
     /// <summary>
+    /// Returns data about each connected network node as a json array of objects.
+    /// </summary>
+    public async Task<PeerInfo[]> GetPeerInfoAsync()
+    {
+        return await _client.CallAsync<PeerInfo[]>("getpeerinfo");
+    }
+
+    /// <summary>
     /// Returns an object containing various state info regarding P2P networking
     /// </summary>
     public async Task<NetworkInfo> GetNetworkInfoAsync()
