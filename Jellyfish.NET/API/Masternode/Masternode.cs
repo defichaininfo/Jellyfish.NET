@@ -130,6 +130,15 @@ public class Masternode
     }
 
     /// <summary>
+    /// Returns the auth and confirm anchor masternode teams at current or specified height
+    /// </summary>
+    /// <param name="blockHeight">The height of block which contain tx</param>
+    public async Task<AnchorTeamResult> GetAnchorTeams(int? blockHeight = null)
+    {
+        return await _client.CallAsync<AnchorTeamResult>("getanchorteams", blockHeight);
+    }
+
+    /// <summary>
     /// Returns number of unique masternodes in the last specified number of blocks.
     /// </summary>
     /// <param name="blockCount">The number of blocks to check for unique masternodes.</param>
