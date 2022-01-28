@@ -63,6 +63,15 @@ public class Masternode
     }
 
     /// <summary>
+    /// Creates a masternode creation transaction with given owner and operator addresses.
+    /// </summary>
+    /// <param name="depth">Maximum depth, from the genesis block is the default.</param>
+    public async Task<MasternodeResult<string>> GetMasternodeBlocks(MasternodeBlock identifier, int? depth = null)
+    {
+        return await _client.CallAsync<MasternodeResult<string>>("getmasternodeblocks", identifier, depth);
+    }
+
+    /// <summary>
     /// Creates a transaction resigning a masternode.
     /// </summary>
     /// <param name="masternodeId">The masternode's id.</param>
