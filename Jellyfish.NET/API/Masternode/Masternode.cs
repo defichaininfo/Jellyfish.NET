@@ -66,7 +66,7 @@ public class Masternode
     /// Creates a masternode creation transaction with given owner and operator addresses.
     /// </summary>
     /// <param name="depth">Maximum depth, from the genesis block is the default.</param>
-    public async Task<MasternodeResult<string>> GetMasternodeBlocks(MasternodeBlock identifier, int? depth = null)
+    public async Task<MasternodeResult<string>> GetMasternodeBlocksAsync(MasternodeBlock identifier, int? depth = null)
     {
         return await _client.CallAsync<MasternodeResult<string>>("getmasternodeblocks", identifier, depth);
     }
@@ -142,7 +142,7 @@ public class Masternode
     /// Returns the auth and confirm anchor masternode teams at current or specified height
     /// </summary>
     /// <param name="blockHeight">The height of block which contain tx</param>
-    public async Task<AnchorTeamResult> GetAnchorTeams(int? blockHeight = null)
+    public async Task<AnchorTeamResult> GetAnchorTeamsAsync(int? blockHeight = null)
     {
         return await _client.CallAsync<AnchorTeamResult>("getanchorteams", blockHeight);
     }
@@ -155,5 +155,13 @@ public class Masternode
     public async Task<int> GetActiveMasternodeCountAsync(int blockCount = 20160)
     {
         return await _client.CallAsync<int>("getactivemasternodecount", blockCount);
+    }
+
+    /// <summary>
+    /// Returns an array of anchors if any
+    /// </summary>
+    public async Task<MasternodeResult<MasternodeAnchor>> ListAnchorsAsync()
+    {
+        return await _client.CallAsync<MasternodeResult<MasternodeAnchor>>("listanchors");
     }
 }
