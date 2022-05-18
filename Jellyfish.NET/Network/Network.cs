@@ -534,6 +534,13 @@ public class Network
         "e30ad732c4ec80946a9aef649e3eef521bf408f29539c0ff254b67272cc908ea"
     };
 
+    /// <summary>
+    /// https://github.com/DeFiCh/ain/blob/14ab934e9f87b21d8b40d427249b068291602523/src/masternodes/skipped_txs.cpp
+    /// https://github.com/DeFiCh/ain/pull/476
+    /// </summary>
+    /// <param name="txid">to check its skipped</param>
+    /// <param name="network">network to check against</param>
+    /// <returns></returns>
     public bool IsSkippedTxId(string txid, NetworkName network)
     {
         return network switch
