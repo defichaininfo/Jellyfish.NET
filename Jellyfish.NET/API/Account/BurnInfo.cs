@@ -23,4 +23,19 @@ public class BurnInfo
     /// Amount collected via emission burn
     /// </summary>
     public decimal EmissionBurn { get; init; }
+
+    /// <summary>
+    /// Value of burn after payback
+    /// </summary>
+    public decimal PaybackBurn { get; init; }
+
+    /// <summary>
+    /// Amount of DFI collected from penalty resulting from paying DUSD using DFI
+    /// </summary>
+    public decimal DFIPaybackFee { get; init; }
+
+    /// <summary>
+    /// Amount of tokens that are paid back
+    /// </summary>
+    public string[] DFIPaybackTokens { get; init; } = Array.Empty<string>();
 }
