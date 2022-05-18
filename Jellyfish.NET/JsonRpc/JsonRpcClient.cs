@@ -48,6 +48,7 @@ public class JsonRpcClient : IApiClient
             case HttpStatusCode.Forbidden:
             case HttpStatusCode.NotFound:
             case HttpStatusCode.InternalServerError:
+            case HttpStatusCode.UnprocessableEntity:
                 throw new ClientApiException($"{(int)response.StatusCode} - {response.StatusCode}");
         }
     }
