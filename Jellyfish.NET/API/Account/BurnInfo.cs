@@ -10,7 +10,7 @@ public class BurnInfo
     public decimal Amount { get; init; }
 
     /// <summary>
-    /// Token amount sent to burn address
+    /// Token amount send to burn address; formatted as AMOUNT@SYMBOL
     /// </summary>
     public string[] Tokens { get; init; } = Array.Empty<string>();
 
@@ -30,12 +30,17 @@ public class BurnInfo
     public decimal PaybackBurn { get; init; }
 
     /// <summary>
+    /// Formatted as AMOUNT@SYMBOL
+    /// </summary>
+    public string[] DexFeeTokens { get; init; } = Array.Empty<string>();
+
+    /// <summary>
     /// Amount of DFI collected from penalty resulting from paying DUSD using DFI
     /// </summary>
     public decimal DFIPaybackFee { get; init; }
 
     /// <summary>
-    /// Amount of tokens that are paid back
+    /// Amount of tokens that are paid back; formatted as AMOUNT@SYMBOL
     /// </summary>
     public string[] DFIPaybackTokens { get; init; } = Array.Empty<string>();
 }
