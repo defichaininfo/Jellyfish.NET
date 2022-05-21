@@ -37,4 +37,14 @@ public class Net
     {
         return await _client.CallAsync<NetworkInfo>("getnetworkinfo");
     }
+
+    /// <summary>
+    /// Disable/enable all p2p network activity.
+    /// </summary>
+    /// <param name="state">state true to enable networking, false to disable</param>
+    /// <returns>current network state</returns>
+    public async Task<bool> SetNetworkActive(bool state)
+    {
+        return await _client.CallAsync<bool>("setnetworkactive", state);
+    }
 }
