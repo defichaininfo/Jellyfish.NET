@@ -107,6 +107,22 @@ namespace Jellyfish.API.SPV
         }
 
         /// <summary>
+        /// Gets all HTLC contracts stored in wallet and creates refunds transactions for all that have expired
+        /// </summary>
+        /// <param name="destinationAddress">Destination for funds in the HTLC</param>
+        /// <param name="feeRate">Fee rate in satoshis per KB. Minimum is 1000.</param>
+        /// <returns>array of txid</returns>
+        public async Task<string[]> RefundHtlcAllAsync(string destinationAddress, decimal feeRate = 10000)
+        {
+            /**
+             * Looking at ain, it's returning an array of txid containing only 1 txid.
+             * Considering some factors, this implementation is different from the rpc docs
+             * on ain side. Refer to PR https://github.com/JellyfishSDK/jellyfish/pull/1324
+             */
+            return await _client.CallAsync<string[]>("spv_refundhtlcall", destinationAddress, feeRate);
+        }
+
+        /// <summary>
         /// List all outputs related to HTLC addresses in the wallet.
         /// </summary>
         /// <param name="scriptAddress">HTLC address to filter result</param>
