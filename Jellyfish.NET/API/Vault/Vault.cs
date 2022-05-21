@@ -113,4 +113,16 @@ public class Vault
         pagination ??= new ListAuctionHistoryPagination();
         return await _client.CallAsync<ListAuctionHistoryDetail[]>("listauctionhistory", owner, pagination);
     }
+
+    public async Task<string[]> EstimateLoanAsync(string vaultId, TokenPercentageSplit tokenSplit, decimal? targetRatio)
+    {
+        if (targetRatio == null)
+        {
+            return await _client.CallAsync<string[]>("estimateloan", vaultId, tokenSplit);
+        }
+        else
+        {
+            return await _client.CallAsync<string[]>("estimateloan", vaultId, tokenSplit, targetRatio);
+        }
+    }
 }
