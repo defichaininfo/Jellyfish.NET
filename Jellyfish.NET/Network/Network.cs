@@ -45,6 +45,48 @@ public class Network
     /// </summary>
     public string MessagePrefix { get; } = "\x15Defi Signed Message:\n";
 
+    public static BlockRewardDistribution BlockRewardDistributionPercentage { get; } = new()
+    {
+        Masternode = 3333,
+        Community = 491,
+        Anchor = 2,
+        Liquidity = 2545,
+        Loan = 2468,
+        Options = 988,
+        UnAllocated = 173
+    };
+
+    public static CoinbaseSubsidyOptions MainNetCoinbaseSubsidyOptions { get; } = new()
+    {
+        EunosHeight = 894000,
+        // https://defiscan.live/blocks/279b1a87aedc7b9471d4ad4e5f12967ab6259926cd097ade188dfcf22ebfe72a
+        GenesisBlockSubsidy = 59100003000000000,
+        PreEunosBlockSubsidy = 20000000000,
+        EunosBaseBlockSubsidy = 40504000000,
+        /*
+         * Eunos Foundation Burn at Block Height: 894000
+         * 
+         * Balances at 893999 right before it got wiped.
+         * dJEbxbfufyPF14SC93yxiquECEfq4YSd9L: 265,713,999.89000000@DFI
+         * 8UAhRuUFCyFUHEPD7qvtj8Zy2HxF5HH5nb:   2,878,893.18829048@DFI
+         */
+        EunosFoundationBurn = 26859289307829046, // 265713999.89000000 + 2,878,893.18829048
+        EmissionReduction = 1658,
+        EmissionReductionInterval = 32690
+    };
+
+    public static CoinbaseSubsidyOptions TestNetCoinbaseSubsidyOptions { get; } = new()
+    {
+        EunosHeight = 354950,
+        // https://defiscan.live/blocks/034ac8c88a1a9b846750768c1ad6f295bc4d0dc4b9b418aee5c0ebd609be8f90?network=TestNet
+        GenesisBlockSubsidy = 30400004000000000,
+        PreEunosBlockSubsidy = 20000000000,
+        EunosBaseBlockSubsidy = 40504000000,
+        EunosFoundationBurn = 0,
+        EmissionReduction = 1658,
+        EmissionReductionInterval = 32690
+    };
+
     private Network(NetworkName name, Bech32 bech32, Bip32 bip32, int wifPrefix, int pubKeyHashPrefix, int scriptHashPrefix)
     {
         Name = name;
@@ -53,6 +95,32 @@ public class Network
         WifPrefix = wifPrefix;
         PubKeyHashPrefix = pubKeyHashPrefix;
         ScriptHashPrefix = scriptHashPrefix;
+    }
+
+    /// <summary>
+    /// Get block reward distribution with block base subsidy
+    /// </summary>
+    public BlockRewardDistribution GetBlockRewardDistribution(decimal subsidy)
+    {
+        return new BlockRewardDistribution
+        {
+            Masternode = CalculateReward(subsidy, BlockRewardDistributionPercentage.Masternode),
+            Community = CalculateReward(subsidy, BlockRewardDistributionPercentage.Community),
+            Anchor = CalculateReward(subsidy, BlockRewardDistributionPercentage.Anchor),
+            Liquidity = CalculateReward(subsidy, BlockRewardDistributionPercentage.Liquidity),
+            Loan = CalculateReward(subsidy, BlockRewardDistributionPercentage.Loan),
+            Options = CalculateReward(subsidy, BlockRewardDistributionPercentage.Options),
+            UnAllocated = CalculateReward(subsidy, BlockRewardDistributionPercentage.UnAllocated),
+        };
+    }
+
+    /// <summary>
+    /// Amount * Percent / 10000 using Integer Arithmetic (matching cpp CAmount)
+    /// </summary>
+    /// <param name="percent">presented in integer as a numerator with denominator of 10000</param>
+    private decimal CalculateReward(decimal amount, decimal percent)
+    {
+        return (int)(amount * percent / 10000);
     }
 
     /// <returns>Network specific DeFi configuration</returns>
