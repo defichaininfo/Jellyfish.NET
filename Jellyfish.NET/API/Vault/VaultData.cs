@@ -1,9 +1,6 @@
-﻿using Jellyfish.API.Core;
-using NBitcoin;
+﻿namespace Jellyfish.API.Vault;
 
-namespace Jellyfish.API.Loan;
-
-public class Vault
+public class VaultData
 {
     public string VaultId { get; init; } = string.Empty;
     public string LoanSchemeId { get; init; } = string.Empty;

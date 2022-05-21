@@ -13,6 +13,7 @@ using Jellyfish.API.RawTransaction;
 using Jellyfish.API.Server;
 using Jellyfish.API.SPV;
 using Jellyfish.API.Token;
+using Jellyfish.API.Vault;
 using Jellyfish.API.Wallet;
 using Jellyfish.JsonRpc;
 
@@ -35,6 +36,7 @@ public class JellyfishClient
     public Server Server { get; }
     public SPV SPV { get; }
     public Token Token { get; }
+    public API.Vault.Vault Vault { get; }
     public Wallet Wallet { get; }
 
     public JellyfishClient(string url, ClientOptions? options = null)
@@ -56,6 +58,7 @@ public class JellyfishClient
         Server = new Server(client);
         SPV = new SPV(client);
         Token = new Token(client);
+        Vault = new API.Vault.Vault(client);
         Wallet = new Wallet(client);
     }
 }

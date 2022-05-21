@@ -1,4 +1,4 @@
-﻿namespace Jellyfish.API.Loan;
+﻿namespace Jellyfish.API.Vault;
 
 public enum VaultState
 {
