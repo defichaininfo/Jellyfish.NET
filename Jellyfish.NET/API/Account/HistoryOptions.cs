@@ -29,4 +29,9 @@ public abstract class HistoryOptions
     /// Maximum number of records to return, 100 by default
     /// </summary>
     public int? Limit { get; init; } = 100;
+
+    /// <summary>
+    /// Order in block, unlimited by default
+    /// </summary>
+    public decimal? Txn { get; init; }
 }
