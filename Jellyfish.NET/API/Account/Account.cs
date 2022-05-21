@@ -243,6 +243,15 @@ public class Account
     }
 
     /// <summary>
+    /// Creates and submits to the network a withdrawal from futures contract transaction.
+    /// </summary>
+    public async Task<string> WithdrawFutureSwapAsync(FutureSwap future, UTXO[]? utxos = null)
+    {
+        utxos ??= Array.Empty<UTXO>();
+        return await _client.CallAsync<string>("withdrawfutureswap", future.Address, future.Amount, future.Destination, utxos);
+    }
+
+    /// <summary>
     /// Get specific pending futures.
     /// </summary>
     public async Task<GetFutureInfo> GetPendingFutureSwapsAsync(string address)
