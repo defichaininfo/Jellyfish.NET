@@ -145,4 +145,14 @@ public class Vault
             return await _client.CallAsync<string[]>("estimateloan", vaultId, tokenSplit, targetRatio);
         }
     }
+
+    /// <summary>
+    /// Returns estimated vault for given collateral and loan amounts.
+    /// </summary>
+    /// <param name="collateralAmounts">Collateral amounts as string array. [ "amount@token" ]</param>
+    /// <param name="loanAmounts">Loan amounts as string array. [ "amount@token" ]</param>
+    public async Task<VaultEstimation> EstimateVaultAsync(string[] collateralAmounts, string[] loanAmounts)
+    {
+        return await _client.CallAsync<VaultEstimation>("estimatevault", collateralAmounts, loanAmounts);
+    }
 }
