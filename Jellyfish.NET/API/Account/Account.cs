@@ -241,4 +241,12 @@ public class Account
         utxos ??= Array.Empty<UTXO>();
         return await _client.CallAsync<string>("futureswap", future.Address, future.Amount, future.Destination, utxos);
     }
+
+    /// <summary>
+    /// Get specific pending futures.
+    /// </summary>
+    public async Task<GetFutureInfo> GetPendingFutureSwapsAsync(string address)
+    {
+        return await _client.CallAsync<GetFutureInfo>("getpendingfutureswaps", address);
+    }
 }
