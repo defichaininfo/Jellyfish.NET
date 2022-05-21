@@ -177,5 +177,15 @@ namespace Jellyfish.API.Wallet
         {
             return await _client.CallAsync<InWalletTransaction>("gettransaction", transactionId.ToString(), includeWatchOnly);
         }
+
+        /// <summary>
+        /// Returns a list of currently loaded wallets.
+        /// For full information on the wallet, use 'getwalletinfo'
+        /// </summary>
+        /// <returns></returns>
+        public async Task<string> ListWallets()
+        {
+            return await _client.CallAsync<string>("listwallets");
+        }
     }
 }
