@@ -20,4 +20,6 @@ public static class DfTxType
     public const string SetGovVariable = "G";
     public const string AutoAuthPrep = "A";
     public const string None = "0";
+    public const string FutureSwapExecution = "q";
+    public const string FutureSwapRefund = "w";
 }

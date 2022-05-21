@@ -232,4 +232,13 @@ public class Account
     {
         return await _client.CallAsync<BurnInfo>("getburninfo");
     }
+
+    /// <summary>
+    /// Creates and submits to the network a futures contract.
+    /// </summary>
+    public async Task<string> FutureSwapAsync(FutureSwap future, UTXO[]? utxos = null)
+    {
+        utxos ??= Array.Empty<UTXO>();
+        return await _client.CallAsync<string>("futureswap", future.Address, future.Amount, future.Destination, utxos);
+    }
 }

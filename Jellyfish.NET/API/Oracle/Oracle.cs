@@ -123,4 +123,12 @@ public class Oracle
         pagination ??= new FixedIntervalPricePagination { Limit = 100 };
         return await _client.CallAsync<ListFixedIntervalPrice[]>("listfixedintervalprices", pagination);
     }
+
+    /// <summary>
+    /// Get the next block that futures will execute and update on.
+    /// </summary>
+    public async Task<decimal> GetFutureSwapBlockAsync()
+    {
+        return await _client.CallAsync<decimal>("getfutureswapblock");
+    }
 }
