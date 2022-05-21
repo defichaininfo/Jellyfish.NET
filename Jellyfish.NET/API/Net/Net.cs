@@ -43,7 +43,7 @@ public class Net
     /// </summary>
     /// <param name="state">state true to enable networking, false to disable</param>
     /// <returns>current network state</returns>
-    public async Task<bool> SetNetworkActive(bool state)
+    public async Task<bool> SetNetworkActiveAsync(bool state)
     {
         return await _client.CallAsync<bool>("setnetworkactive", state);
     }

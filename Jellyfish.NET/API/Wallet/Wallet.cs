@@ -173,7 +173,7 @@ namespace Jellyfish.API.Wallet
         /// <param name="transactionId">transaction id</param>
         /// <param name="includeWatchOnly">optional, default = true</param>
         /// <returns></returns>
-        public async Task<InWalletTransaction> GetTransaction(uint256 transactionId, bool includeWatchOnly = true)
+        public async Task<InWalletTransaction> GetTransactionAsync(uint256 transactionId, bool includeWatchOnly = true)
         {
             return await _client.CallAsync<InWalletTransaction>("gettransaction", transactionId.ToString(), includeWatchOnly);
         }
@@ -183,7 +183,7 @@ namespace Jellyfish.API.Wallet
         /// For full information on the wallet, use 'getwalletinfo'
         /// </summary>
         /// <returns></returns>
-        public async Task<string> ListWallets()
+        public async Task<string> ListWalletsAsync()
         {
             return await _client.CallAsync<string>("listwallets");
         }

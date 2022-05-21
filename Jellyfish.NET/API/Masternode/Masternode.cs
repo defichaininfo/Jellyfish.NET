@@ -139,6 +139,17 @@ public class Masternode
     }
 
     /// <summary>
+    /// Checks that custom transaction was affected on chain
+    /// </summary>
+    /// <param name="transactionId">transaction hash</param>
+    /// <param name="blockHeight">height of block which contain transaction</param>
+    /// <returns>indicate that custom transaction was affected on chain</returns>
+    public async Task<bool> IsAppliedCustomTransactionAsync(string transactionId, int blockHeight)
+    {
+        return await _client.CallAsync<bool>("isappliedcustomtx", transactionId, blockHeight);
+    }
+
+    /// <summary>
     /// Returns the auth and confirm anchor masternode teams at current or specified height
     /// </summary>
     /// <param name="blockHeight">The height of block which contain tx</param>

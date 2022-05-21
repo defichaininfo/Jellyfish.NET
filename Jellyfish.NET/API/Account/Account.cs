@@ -170,7 +170,7 @@ public class Account
     /// <param name="owner">Single account ID (CScript or address)</param>
     /// <param name="blockHeight">Block height to search in</param>
     /// <param name="txn">Order in block</param>
-    public async Task<AccountHistory> GetAccountHistory(string owner, int blockHeight, decimal txn)
+    public async Task<AccountHistory> GetAccountHistoryAsync(string owner, int blockHeight, decimal txn)
     {
         return await _client.CallAsync<AccountHistory>("getaccounthistory", owner, blockHeight, txn);
     }
