@@ -165,6 +165,17 @@ public class Account
     }
 
     /// <summary>
+    /// Returns information about single account history
+    /// </summary>
+    /// <param name="owner">Single account ID (CScript or address)</param>
+    /// <param name="blockHeight">Block height to search in</param>
+    /// <param name="txn">Order in block</param>
+    public async Task<AccountHistory> GetAccountHistory(string owner, int blockHeight, decimal txn)
+    {
+        return await _client.CallAsync<AccountHistory>("getaccounthistory", owner, blockHeight, txn);
+    }
+
+    /// <summary>
     /// Returns count of account history
     /// </summary>
     /// <param name="owner">single account ID (CScript or address) or reserved words 'mine' to list history for all owned accounts or 'all' to list whole DB</param>
