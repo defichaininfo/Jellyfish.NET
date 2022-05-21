@@ -25,6 +25,11 @@ public class BurnInfo
     public decimal EmissionBurn { get; init; }
 
     /// <summary>
+    /// Amount collected via auction burn
+    /// </summary>
+    public decimal AuctionBurn { get; init; }
+
+    /// <summary>
     /// Value of burn after payback
     /// </summary>
     public decimal PaybackBurn { get; init; }
