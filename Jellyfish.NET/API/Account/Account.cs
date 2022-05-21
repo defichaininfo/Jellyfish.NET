@@ -249,4 +249,12 @@ public class Account
     {
         return await _client.CallAsync<GetFutureInfo>("getpendingfutureswaps", address);
     }
+
+    /// <summary>
+    /// List all pending futures.
+    /// </summary>
+    public async Task<ListFutureInfo[]> ListPendingFutureSwapsAsync()
+    {
+        return await _client.CallAsync<ListFutureInfo[]>("listpendingfutureswaps");
+    }
 }
