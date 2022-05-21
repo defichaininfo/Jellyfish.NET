@@ -114,6 +114,26 @@ public class Vault
         return await _client.CallAsync<ListAuctionHistoryDetail[]>("listauctionhistory", owner, pagination);
     }
 
+    /// <summary>
+    /// Returns amount of collateral tokens needed to take an amount of loan tokens for a target collateral ratio.
+    /// </summary>
+    /// <param name="loanAmounts">Amount as array. Example: [ "amount@token" ]</param>
+    /// <param name="targetRatio">Target collateral ratio.</param>
+    /// <param name="tokenSplit">Object with loans token as key and their percent split as value</param>
+    /// <returns>Array of <amount@token> strings</returns>
+    public async Task<string[]> EstimateCollateralAsync(string[] loanAmounts, decimal targetRatio, TokenPercentageSplit? tokenSplit)
+    {
+        tokenSplit ??= new TokenPercentageSplit { { "DFI", 1 } };
+        return await _client.CallAsync<string[]>("estimatecollateral", loanAmounts, targetRatio, tokenSplit);
+    }
+
+    /// <summary>
+    /// Returns amount of loan tokens a vault can take depending on a target collateral ratio.
+    /// </summary>
+    /// <param name="vaultId">vault hex id</param>
+    /// <param name="tokenSplit">Object with loans token as key and their percent split as value</param>
+    /// <param name="targetRatio">Target collateral ratio. (defaults to vault's loan scheme ratio)</param>
+    /// <returns>Array of `token@amount`</returns>
     public async Task<string[]> EstimateLoanAsync(string vaultId, TokenPercentageSplit tokenSplit, decimal? targetRatio)
     {
         if (targetRatio == null)
