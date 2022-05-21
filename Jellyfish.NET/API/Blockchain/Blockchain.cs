@@ -190,4 +190,15 @@ public class Blockchain
     {
         return await _client.CallAsync<WaitBlockResult>("waitforblockheight", height, timeout);
     }
+
+    /// <summary>
+    /// Get statistics about the total number and rate of transactions in the chain.
+    /// </summary>
+    /// <param name="blocks">size of the window in number of blocks. Defaults to 1 month (~86,400) blocks.</param>
+    /// <param name="blockHash">the hash of the block that ends the window. Defaults to the chain tip.</param>
+    /// <returns></returns>
+    public async Task<ChainTxStats> GetChainTxStats(int? blocks, uint256? blockHash)
+    {
+        return await _client.CallAsync<ChainTxStats>("getchaintxstats", blocks, blockHash?.ToString());
+    }
 }
