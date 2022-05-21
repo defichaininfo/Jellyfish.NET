@@ -48,4 +48,14 @@ public class BurnInfo
     /// Amount of tokens that are paid back; formatted as AMOUNT@SYMBOL
     /// </summary>
     public string[] DFIPaybackTokens { get; init; } = Array.Empty<string>();
+
+    /// <summary>
+    /// Amount of paybacks
+    /// </summary>
+    public string[] PaybackFees { get; init; } = Array.Empty<string>();
+
+    /// <summary>
+    /// Amount of tokens that are paid back
+    /// </summary>
+    public string[] PaybackTokens { get; init; } = Array.Empty<string>();
 }

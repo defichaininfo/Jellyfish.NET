@@ -262,6 +262,15 @@ public class Loan
     }
 
     /// <summary>
+    /// Return loan in a desired amount.
+    /// </summary>
+    public async Task<string> PaybackLoanAsync(PaybackLoanMetadataV2 metadata, UTXO[]? utxos = null)
+    {
+        utxos ??= Array.Empty<UTXO>();
+        return await _client.CallAsync<string>("paybackloan", metadata, utxos);
+    }
+
+    /// <summary>
     /// Bid to vault in auction
     /// </summary>
     /// <param name="utxos">Specific UTXOs to spend</param>
